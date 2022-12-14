@@ -8,8 +8,8 @@ import (
 
 func ParseToListOfCalories(filePath string) ([]int, error) {
 	var (
-		elfsCaloriesList []int
-		totalElfCalories int
+		elvesCaloriesList []int
+		totalElfCalories  int
 	)
 
 	caloriesList, err := extractCalories(filePath)
@@ -19,7 +19,7 @@ func ParseToListOfCalories(filePath string) ([]int, error) {
 
 	for food, amountOfCalories := range caloriesList {
 		if isLastFoodCaloriesForElf(amountOfCalories) {
-			elfsCaloriesList = append(elfsCaloriesList, totalElfCalories)
+			elvesCaloriesList = append(elvesCaloriesList, totalElfCalories)
 			totalElfCalories = 0
 			continue
 		}
@@ -32,11 +32,11 @@ func ParseToListOfCalories(filePath string) ([]int, error) {
 		totalElfCalories += caloriesAsInt
 
 		if isLastFoodCaloriesFromList(food, caloriesList) {
-			elfsCaloriesList = append(elfsCaloriesList, totalElfCalories)
+			elvesCaloriesList = append(elvesCaloriesList, totalElfCalories)
 		}
 	}
 
-	return elfsCaloriesList, nil
+	return elvesCaloriesList, nil
 }
 
 func extractCalories(filepath string) ([]string, error) {
